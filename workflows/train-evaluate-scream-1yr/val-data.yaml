@@ -1,0 +1,26 @@
+timesteps:
+- '20100815.060000'
+- '20100116.120000'
+- '20101128.030000'
+- '20100207.000000'
+- '20100704.030000'
+- '20100521.210000'
+- '20101109.180000'
+- '20100612.180000'
+- '20100707.030000'
+- '20100504.090000'
+timesteps_per_batch: 10
+ptop: 225.0
+res: ne30
+unstacked_dims:
+- z
+mapper_config:
+    function: open_nudge_to_fine_scream
+    kwargs:
+        data_path: /usr/workspace/climdat/eamxx-ml/nudge-to-fine-sample-data/20231113.F2010-SCREAMv1.ne30pg2_ne30pg2.quartz/tests/720x1_1x1_ndays_nudged/run/2010_zarr
+        nudging_variables:
+        - T_mid
+        - qv
+        - U
+        - V
+        physics_timestep_seconds: 1800
