@@ -1,3 +1,4 @@
+catalog_path: /usr/WS1/climdat/eamxx-ml/fv3net/LC_catalog.yaml
 timesteps:
 - '20100815.060000'
 - '20100116.120000'
