@@ -1,0 +1,5 @@
+scream-run-script
+=================
+The run scripts in this directory are adapted from [run_eamxx_template.sh](https://github.com/E3SM-Project/scream-docs/blob/master/run_scripts/run_eamxx_template.sh).
+
+During a typical nudge-to-fine workflow, we start from a high-resolution simulation and output the state in a coarsened state, then use the coarsened data to nudge a low-resolution simulation. For example, we start from a ne120 simulation (`run_ne120pg2_2yr.sh`) and output the state in ne30 resolution, then we run a ne30 simulation (`run_ne30pg2_2yr.sh`) and nudge it with the coarsened ne120->ne30 state. In particular, during the low-resolution simulation, we need to specify the path to the coarsened state file from the high-resolution simulation (`sc_export::prescribed_from_file::files` and `nudging::nudging_filename`).
