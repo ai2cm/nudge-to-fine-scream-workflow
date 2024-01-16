@@ -8,6 +8,7 @@ This directory contains the workflows that are used during a typical nudge-to-fi
 2. [convert-native-scream-to-zarr](prepare-native-scream-output/convert-native-scream-to-zarr/README.md): convert nudging tendencies to the format needed for ML training
     - (optional) [preprocess-to-netcdf](prepare-native-scream-output/preprocess-to-netcdf/README.md): batch preprocess the nudging tendencies to speed up ML training
 3. [train-evaluate-scream-1yr](train-evaluate-scream-1yr/README.md): train and evaluate the ML model
+    - (optional) [train-novelty-detection](train-novelty-detection/README.md): train a novelty detection model to be used as a composite model with the baseline model
 4. (optional) [offline-diags](offline-diags/README.md): create offline report for the ML model
 5. [scream-run-script](scream-run-script/README.md): run low-resolution ML corrected simulation
     - run a [low-resolution ML-corrected simulation](scream-run-script/run_ne30pg2_ML_correction.sh) using the trained ML model from step 3

@@ -1,0 +1,16 @@
+cache:
+  in_memory: false
+derived_output_variables: []
+hyperparameters:
+  gamma: 0.012
+  input_variables:
+  - T_mid
+  - qv
+  max_iter: -1
+  nu: 1e-4
+  packer_config:
+    clip: {}
+model_type: ocsvm_novelty_detector
+output_transforms: []
+random_seed: 0
+sample_dim_name: sample

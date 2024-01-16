@@ -1,0 +1,3 @@
+function: batches_from_netcdf
+kwargs:
+  path: /usr/workspace/climdat/eamxx-ml/nudge-to-fine-sample-data/20231208.F2010-SCREAMv1.ne30pg2_ne30pg2.ruby/tests/840x1_1x1_ndays_nudged/run/batch-netcdfs-2010
