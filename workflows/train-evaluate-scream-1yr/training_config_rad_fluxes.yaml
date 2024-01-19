@@ -1,0 +1,56 @@
+derived_output_variables: 
+  - net_shortwave_sfc_flux_via_transmissivity
+model_type: dense
+random_seed: 1
+hyperparameters:
+  callbacks:
+  - name: EpochModelCheckpoint
+    kwargs:
+      filepath:  model_checkpoints/epoch_{epoch:02d}.h5
+      save_weights_only: false
+      save_freq: epoch
+      mode: auto
+      period: 10
+  - kwargs:
+      monitor: val_loss
+      patience: 15
+      restore_best_weights: true
+      min_delta: 0.00049
+    name: EarlyStopping
+  dense_network:
+    depth: 3
+    kernel_regularizer:
+      kwargs:
+        l: 0.0001
+      name: l2
+    width: 419
+  input_variables:
+    - cos_zenith_angle
+    - surface_geopotential
+    - T_mid
+    - qv
+    - lat
+  loss:
+    loss_type: mae
+    scaling: standard
+    weight: 1.0
+  normalization_fit_samples: 8000
+  optimizer_config:
+    kwargs:
+      learning_rate: 0.000049
+    name: Adam
+  output_variables:
+    - shortwave_transmissivity_of_atmospheric_column        
+    - override_for_time_adjusted_total_sky_downward_longwave_flux_at_surface
+  output_limit_config:
+    limits:
+      shortwave_transmissivity_of_atmospheric_column:
+        min: 0.
+        max: 1.
+      override_for_time_adjusted_total_sky_downward_longwave_flux_at_surface:
+        min: 0.
+  training_loop:
+    batch_size: 512
+    epochs: 40
+    in_memory: false
+    shuffle_buffer_size: 50000

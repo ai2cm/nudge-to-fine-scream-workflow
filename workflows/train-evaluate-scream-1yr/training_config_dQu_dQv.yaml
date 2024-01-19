@@ -1,0 +1,62 @@
+model_type: dense
+random_seed: 0
+hyperparameters:
+  callbacks:
+  - kwargs:
+      monitor: val_loss
+      patience: 4
+    name: EarlyStopping
+  clip_config:
+    clip:
+      T_mid:
+        start: 20
+      dQu:
+        start: 3
+      dQv:
+        start: 3
+      qv:
+        start: 20
+  dense_network:
+    depth: 3
+    gaussian_noise: 0
+    kernel_regularizer:
+      kwargs:
+        l: 0.0001
+      name: l2
+    spectral_normalization: false
+    width: 419
+  input_variables:
+  - cos_zenith_angle
+  - surface_geopotential
+  - T_mid
+  - qv
+  - lat
+  - U
+  - V
+  loss:
+    loss_type: mae
+    scaling: standard
+    weight: 1
+  normalization_fit_samples: 8000
+  optimizer_config:
+    kwargs:
+      learning_rate: 0.00014
+    learning_rate_schedule: null
+    name: Adam
+  output_limit_config:
+    limits:
+      dQu:
+        max: 0.016
+        min: -0.016
+      dQv:
+        max: 0.016
+        min: -0.016
+  output_variables:
+  - dQu
+  - dQv
+  training_loop:
+    batch_size: 512
+    epochs: 20
+    in_memory: false
+    shuffle_buffer_size: 50000
+  weights: null
