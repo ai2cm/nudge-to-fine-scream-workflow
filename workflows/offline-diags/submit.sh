@@ -2,6 +2,7 @@
 #SBATCH -p debug
 #SBATCH -J offline_diags
 #SBATCH -N 1
+#SBATCH -C gpu
 #SBATCH -t 00:30:00
 #SBATCH -A m4492
 #SBATCH --output=%x-%j.out
