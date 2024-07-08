@@ -9,7 +9,7 @@
 
 set -e
 preprocess_output=/pscratch/sd/a/andrep/Corrective-ML/nudged_sim_with_fixed_radation_from_ne120/batch-validation-netcdfs-radiation-v2
-preprocess_config=$(pwd)/val-data.yaml
+preprocess_config=$(pwd)/validation.yaml
 conda activate /global/common/software/m4492/fv3net-shared-py39
 python -m loaders.batches.save $preprocess_config $preprocess_output --num-workers 12
 cp $preprocess_config $preprocess_output
