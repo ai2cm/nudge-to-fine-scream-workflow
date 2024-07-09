@@ -1,0 +1,82 @@
+cache:
+  in_memory: false
+  local_download_path: null
+derived_output_variables: []
+hyperparameters:
+  callbacks:
+  - kwargs:
+      monitor: val_loss
+      patience: 25
+    name: EarlyStopping
+  - kwargs:
+      filepath: artifacts/epoch_{epoch:02d}.h5
+      mode: auto
+      period: 1
+      save_freq: epoch
+      save_weights_only: false
+    name: EpochModelCheckpoint
+  clip_config:
+    clip:
+      T_mid:
+        start: 20
+        step: null
+        stop: null
+      dQ1:
+        start: 3
+        step: null
+        stop: null
+      dQ2:
+        start: 3
+        step: null
+        stop: null
+      qv:
+        start: 20
+        step: null
+        stop: null
+  dense_network:
+    depth: 3
+    gaussian_noise: 0.0
+    kernel_regularizer:
+      kwargs:
+        l: 0.0001
+      name: l2
+    spectral_normalization: false
+    width: 419
+  input_variables:
+  - cos_zenith_angle
+  - T_mid
+  - qv
+  - surface_geopotential
+  - lat
+  loss:
+    loss_type: mae
+    scaling: standard
+    weight: 1.0
+  normalization_fit_samples: 8000
+  optimizer_config:
+    kwargs:
+      learning_rate: 0.00014
+    learning_rate_schedule: null
+    name: Adam
+  output_limit_config:
+    limits:
+      dQ1:
+        max: 0.002
+        min: -0.002
+      dQ2:
+        max: 1.2e-06
+        min: -1.2e-06
+  output_variables:
+  - dQ1
+  - dQ2
+  predict_columns: true
+  training_loop:
+    batch_size: 512
+    epochs: 500
+    in_memory: false
+    shuffle_buffer_size: 50000
+  weights: null
+model_type: dense
+output_transforms: []
+random_seed: 0
+sample_dim_name: sample

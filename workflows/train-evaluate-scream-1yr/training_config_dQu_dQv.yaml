@@ -1,5 +1,7 @@
-model_type: dense
-random_seed: 0
+cache:
+  in_memory: false
+  local_download_path: null
+derived_output_variables: []
 hyperparameters:
   callbacks:
   - kwargs:
@@ -10,15 +12,23 @@ hyperparameters:
     clip:
       T_mid:
         start: 20
+        step: null
+        stop: null
       dQu:
         start: 3
+        step: null
+        stop: null
       dQv:
         start: 3
+        step: null
+        stop: null
       qv:
         start: 20
+        step: null
+        stop: null
   dense_network:
     depth: 3
-    gaussian_noise: 0
+    gaussian_noise: 0.0
     kernel_regularizer:
       kwargs:
         l: 0.0001
@@ -36,7 +46,7 @@ hyperparameters:
   loss:
     loss_type: mae
     scaling: standard
-    weight: 1
+    weight: 1.0
   normalization_fit_samples: 8000
   optimizer_config:
     kwargs:
@@ -54,9 +64,14 @@ hyperparameters:
   output_variables:
   - dQu
   - dQv
+  predict_columns: true
   training_loop:
     batch_size: 512
-    epochs: 20
+    epochs: 300
     in_memory: false
     shuffle_buffer_size: 50000
   weights: null
+model_type: dense
+output_transforms: []
+random_seed: 0
+sample_dim_name: sample

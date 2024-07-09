@@ -1,0 +1,14 @@
+[
+    {
+      "url": "/pscratch/sd/a/andrep/for_diags/tquvRad_novelty_ml_corrected_v2/_diagnostics",
+      "name": "tquvRad_novelty_ml_corrected"
+    },
+    {
+      "url": "/pscratch/sd/a/andrep/for_diags/nudged_sim_fixed_rad/_diagnostics",
+      "name": "nudged_ne30_fixed_rad"
+    },
+    {
+      "url": "/pscratch/sd/a/andrep/for_diags/baseline/_diagnostics",
+      "name": "baseline"
+    }
+]
