@@ -1,0 +1,80 @@
+derived_output_variables:
+  - downward_nir_fraction_at_surface
+  - downward_vis_diffuse_fraction_at_surface
+  - downward_nir_diffuse_fraction_at_surface
+hyperparameters:
+  callbacks:
+  - kwargs:
+      filepath: model_checkpoints/epoch_{epoch:02d}.h5
+      mode: auto
+      period: 10
+      save_freq: epoch
+      save_weights_only: false
+    name: EpochModelCheckpoint
+  # - kwargs: {}
+  #   name: WandbCallback
+  - kwargs:
+      min_delta: 0.00049
+      monitor: val_loss
+      patience: 15
+      restore_best_weights: true
+    name: EarlyStopping
+  clip_config:
+    clip: {}
+  dense_network:
+    depth: 3
+    kernel_regularizer:
+      kwargs:
+        l: 0.0001
+      name: l2
+    width: 419
+  input_variables:
+  - cos_zenith_angle
+  - surface_geopotential
+  - T_mid
+  - qv
+  - lat
+  loss:
+    loss_type: mae
+    scaling: standard
+    weight: 1.0
+  normalization_fit_samples: 8000
+  optimizer_config:
+    kwargs:
+      learning_rate: 4.9e-05
+    name: Adam
+  output_limit_config:
+    limits:
+      downward_vis_fraction_at_surface:
+        min: 0.30
+        max: 0.85
+      downward_vis_diffuse_fraction_at_surface:
+        min: 0
+        max: 1
+      downward_nir_diffuse_fraction_at_surface:
+        min: 0
+        max: 1
+      shortwave_transmissivity_of_atmospheric_column:
+        min: 0
+        max: 1
+      total_sky_downward_shortwave_flux_at_surface:
+        min: 0
+      sfc_flux_lw_dn:
+        min: 0
+  output_variables:
+    - sfc_flux_lw_dn
+    - shortwave_transmissivity_of_atmospheric_column
+    - total_sky_downward_shortwave_flux_at_surface
+    - downward_vis_fraction_at_surface
+    - downward_vis_direct_fraction_at_surface
+    - downward_nir_direct_fraction_at_surface
+  training_loop:
+    batch_size: 512
+    epochs: 200
+    in_memory: false
+    shuffle_buffer_size: 50000
+    log_verbosity: 2
+model_type: dense
+output_transforms: []
+random_seed: 0
+sample_dim_name: sample

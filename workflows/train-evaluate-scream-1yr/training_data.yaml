@@ -1,3 +1,0 @@
-function: batches_from_netcdf
-kwargs:
-  path: /usr/WS1/climdat/eamxx-ml/nudge-to-fine-sample-data/20231113-train-2010/
